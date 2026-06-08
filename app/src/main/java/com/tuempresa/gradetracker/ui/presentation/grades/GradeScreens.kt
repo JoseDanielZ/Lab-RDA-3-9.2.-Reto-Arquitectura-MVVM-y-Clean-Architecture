@@ -1,5 +1,7 @@
 package com.tuempresa.gradetracker.ui.presentation.grades
 
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.getValue
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -139,9 +141,9 @@ fun GradeItem(grade: AcademicGrade) {
 @Composable
 fun GradeFormScreen(viewModel: GradeViewModel) {
     val uiState by viewModel.uiState.collectAsState()
-    var activityName by remember { mutableStateOf("") }
-    var subject by remember { mutableStateOf("") }
-    var gradeText by remember { mutableStateOf("") }
+    var activityName by rememberSaveable { mutableStateOf("") }
+    var subject by rememberSaveable { mutableStateOf("") }
+    var gradeText by rememberSaveable { mutableStateOf("") }
 
     val isFormValid = activityName.isNotBlank() && subject.isNotBlank() && gradeText.isNotBlank()
 
